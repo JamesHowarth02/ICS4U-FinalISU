@@ -1,3 +1,4 @@
+import java.awt.AlphaComposite;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 /**
  *
@@ -25,6 +28,10 @@ public class startScreen extends BasicGameState {
     
     Image template, background, logo, start;
     Sound sound;
+    
+    boolean flipInterval = false;
+    int flipX = 500;
+    int flipY = 25;
 
     @Override
     public int getID() {
@@ -57,13 +64,12 @@ public class startScreen extends BasicGameState {
         grphcs.drawString("Left Bumper", 525, 425);
         grphcs.drawString("Right Bumper", 775, 425);
         grphcs.drawString("Register your controller by holding Left Bumper and Right Bumper", 415, 775);
-        grphcs.drawString("Registered Players: " + players.size(), 0, 775);
+        grphcs.drawString("Registered Players: " + players.size(), 0, 780);
     }
     
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int iz) throws SlickException {
         parseControllers();        
-        testScreen.setName("Galaxy Warriors");
         
         for(Controller controller : available_controllers) {
             boolean isReady = controller.isButtonPressed(4) && controller.isButtonPressed(5);
@@ -81,7 +87,7 @@ public class startScreen extends BasicGameState {
             Controller controller = player.getController();
             boolean isReady = player.isButtonPressed("ST");
             if(isReady) {
-                System.out.println("pressed");
+                sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
             }
         }
     }
@@ -100,5 +106,9 @@ public class startScreen extends BasicGameState {
                 available_controllers.add(controller);
             }
         }
+    }
+    
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 }

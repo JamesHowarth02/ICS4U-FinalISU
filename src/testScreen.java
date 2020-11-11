@@ -42,10 +42,10 @@ public class testScreen extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        Controller controller = Controllers.getController(1);
-        controller.setRumblerStrength(0, 0);
-        grphcs.setColor(Color.red);
-        grphcs.drawString(name, 10, 10);
+       // Controller controller = Controllers.getController(1);
+       // controller.setRumblerStrength(0, 0);
+        //grphcs.setColor(Color.red);
+        //grphcs.drawString(name, 10, 10);
     }
 
     @Override

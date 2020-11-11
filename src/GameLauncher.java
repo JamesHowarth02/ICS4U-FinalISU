@@ -12,19 +12,20 @@ public class GameLauncher extends StateBasedGame {
 
     public GameLauncher(String title) {
         super(title);
+        this.addState(new startScreen());
     }
 
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-        this.addState(new startScreen());
+        this.getState(0).init(gc, this);
         this.addState(new testScreen());
     }
     
     public static void main(String[] args) throws SlickException {
-        GameLauncher game = new GameLauncher("");
+        GameLauncher game = new GameLauncher("Galaxy Warriors");
         AppGameContainer app = new AppGameContainer(game);
-        app.setDisplayMode(800, 600, false);
+        app.setDisplayMode(1400, 800, false);
         app.setShowFPS(false);
         app.setTargetFrameRate(360);
         app.start();

@@ -3,21 +3,44 @@
  * @author Chatt
  */
 public abstract class Entity {
-    protected int health, shield;
+    protected int health, damage, speed;
     protected int xLoc, yLoc;
     protected String name;
     
     public void setName(String name) {
         this.name = name;
     }
-    
     public void setHealth(int health) {
         this.health = health;
+    }
+    
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+    
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
     
     public void setPosition(int xLoc, int yLoc) {
         this.xLoc = xLoc;
         this.yLoc = yLoc;
+    }
+    
+    public int getHealth() {
+        return this.health;
+    }
+    
+    public int getDamage() {
+        return this.damage;
+    }
+    
+    public int getSpeed() {
+        return this.speed;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     public int getXPosition() {
@@ -27,12 +50,5 @@ public abstract class Entity {
     public int getYPosition() {
         return this.yLoc;
     }
-    
-    public int getHealth() {
-        return this.health;
-    }
-    
-    public String getName() {
-        return this.name;
-    }
+
 }

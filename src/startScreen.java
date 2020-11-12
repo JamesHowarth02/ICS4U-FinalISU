@@ -45,8 +45,7 @@ public class startScreen extends BasicGameState {
         background = new Image("assets/images/menu_background.png");
         logo = new Image("assets/images/LOGO.png");
         start = new Image("assets/images/press-start.png");
-        sound.play(1f, 0.5f);
-        sound.loop();
+        //sound.play(1, (float) 0.25);
         try {
            Controllers.create();
         } catch (LWJGLException ex) {
@@ -59,7 +58,7 @@ public class startScreen extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         background.draw(0, 0);
         logo.draw(250, 100);
-        start.draw(450, 350);
+        if(players.size()>0) start.draw(450, 350);
         template.draw(375, 425, 640, 360);
         grphcs.drawString("Left Bumper", 525, 425);
         grphcs.drawString("Right Bumper", 775, 425);
@@ -87,6 +86,7 @@ public class startScreen extends BasicGameState {
             Controller controller = player.getController();
             boolean isReady = player.isButtonPressed("ST");
             if(isReady) {
+                sound.stop();
                 sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
             }
         }

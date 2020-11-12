@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import org.lwjgl.input.Controller;
 
 /**
@@ -19,17 +20,43 @@ import org.lwjgl.input.Controller;
  * 9 = RJ (right joy)
  */
 
-public class Player extends Entity {
+public class Player {
     private final Controller controller;
     private final String identifier;
+    private SpaceShip spaceship;
+    private String name = "";
+    private static ArrayList<Player> players = new ArrayList();
+    private int enemies_destroyed = 0;
+    private int levels_completed = 0;
     
     public Player(Controller controller) {
         this.controller = controller;
         this.identifier = controller.getName();
+        players.add(this);
+    }
+    
+    public SpaceShip getSpaceShip() {
+        return this.spaceship;
+    }
+    
+    public void setSpaceShip(SpaceShip spaceship) {
+        this.spaceship = spaceship;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     public Controller getController() {
         return this.controller;
+    }
+    
+    static public ArrayList<Player> getPlayers() {
+        return players;
     }
     
     public boolean isButtonPressed(String map) { // Maping the buttons. This was painful to do-- apparently no one on the internet has mapped an Xbox One Controller??

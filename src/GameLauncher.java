@@ -19,7 +19,8 @@ public class GameLauncher extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
         this.getState(0).init(gc, this);
-        this.addState(new testScreen());
+        this.addState(new selectScreen());
+        this.addState(new levelVarient1());
     }
     
     public static void main(String[] args) throws SlickException {
@@ -27,7 +28,7 @@ public class GameLauncher extends StateBasedGame {
         AppGameContainer app = new AppGameContainer(game);
         app.setDisplayMode(1400, 800, false);
         app.setShowFPS(false);
-        app.setTargetFrameRate(360);
+        app.setTargetFrameRate(120);
         app.start();
     }
 }

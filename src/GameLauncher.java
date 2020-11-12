@@ -21,6 +21,7 @@ public class GameLauncher extends StateBasedGame {
         this.getState(0).init(gc, this);
         this.addState(new selectScreen());
         this.addState(new levelVarient1());
+        this.addState(new endScreen());
     }
     
     public static void main(String[] args) throws SlickException {

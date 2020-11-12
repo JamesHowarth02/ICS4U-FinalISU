@@ -45,7 +45,7 @@ public class startScreen extends BasicGameState {
         background = new Image("assets/images/menu_background.png");
         logo = new Image("assets/images/LOGO.png");
         start = new Image("assets/images/press-start.png");
-        //sound.play(1, (float) 0.25);
+        sound.play(1, (float) 0.25);
         try {
            Controllers.create();
         } catch (LWJGLException ex) {

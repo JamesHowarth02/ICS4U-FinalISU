@@ -26,6 +26,7 @@ public class Player {
     private SpaceShip spaceship;
     private String name = "";
     private static ArrayList<Player> players = new ArrayList();
+    private static boolean mission_success = false;
     private int enemies_destroyed = 0;
     private int levels_completed = 0;
     
@@ -45,6 +46,14 @@ public class Player {
     
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public void setMission(boolean m) {
+        this.mission_success = m;
+    }
+    
+    static public boolean getMissionStatus() {
+        return mission_success;
     }
     
     public String getName() {

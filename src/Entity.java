@@ -1,11 +1,16 @@
+
+import org.newdawn.slick.geom.Rectangle;
+
 /**
  *
  * @author Chatt
  */
 public abstract class Entity {
-    protected int health, damage, speed;
+    protected int health, maxhealth, damage, speed;
     protected int xLoc, yLoc;
     protected String name;
+
+    public abstract Rectangle getHitbox();
     
     public void setName(String name) {
         this.name = name;
@@ -13,9 +18,16 @@ public abstract class Entity {
     public void setHealth(int health) {
         this.health = health;
     }
+    public void setMaxHealth(int health) {
+        this.maxhealth = health;
+    }
     
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+    
+    public void takeDamage(int amount) {
+        this.health = this.health - amount;
     }
     
     public void setSpeed(int speed) {
@@ -29,6 +41,10 @@ public abstract class Entity {
     
     public int getHealth() {
         return this.health;
+    }
+    
+    public int getMaxHealth() {
+        return this.maxhealth;
     }
     
     public int getDamage() {

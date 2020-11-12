@@ -148,6 +148,7 @@ public class selectScreen extends BasicGameState {
         }
         if(isConfirmed) {
             takeoff.play(1, 2);
+            currentPlayer.getSpaceShip().setPosition(200 + players.size() * 100, 600);
             if(playerIndex == players.size()-1) {
                 backgroundSound.stop();
                 sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
